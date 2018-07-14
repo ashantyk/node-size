@@ -1,0 +1,22 @@
+{
+    "name": "node-size",
+    "description": "Convert byte sizes to human-readable formats and back",
+    "version": "0.0.1",
+    "main": "index.js",
+    "license": "MIT",
+    "homepage": "https://github.com/ashantyk/node-size",
+    "author": {
+        "name": "Gabriel Barbieru",
+        "email": "ashantyk@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ashantyk/node-size.git"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "devDependencies": {
+         "mocha": "^5.2.0"
+    }
+}
