@@ -18,5 +18,13 @@
     },
     "devDependencies": {
          "mocha": "^5.2.0"
-    }
+    },
+    "keywords": [
+        "size",
+        "human-readable",
+        "human readable",
+        "bytes",
+        "human-friendly",
+        "human friendly"
+    ],
 }
