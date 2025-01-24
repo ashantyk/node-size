@@ -1,5 +1,5 @@
-const assert = require('assert');
-const size = require('./../index.js');
+import assert from 'node:assert'
+import { humanReadableSize, SIZE_FORMAT } from "../index.js";
 
 describe('Size', function() {
 
@@ -28,7 +28,7 @@ describe('Size', function() {
             let input = tests[output];
 
             it('should return ' + output + ' when params are: ' + input + ", IEC", function() {
-                assert.equal(size.humanReadable.call(size, input, size.FORMAT.IEC), output);
+                assert.equal(humanReadableSize(input, SIZE_FORMAT.IEC), output);
             });
 
         }
@@ -60,7 +60,7 @@ describe('Size', function() {
             let input = tests[output];
 
             it('should return ' + output + ' when params are: ' + input + ", SI", function() {
-                assert.equal(size.humanReadable.call(size, input, size.FORMAT.SI), output);
+                assert.equal(humanReadableSize(input, SIZE_FORMAT.SI), output);
             });
 
         }

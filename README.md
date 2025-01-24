@@ -18,38 +18,43 @@ Usage
 
 Simple usage:
 ```js
-const size = require('node-size');
+import { humanReadableSize } from 'node-size';
 
 let input = 10362;
-let output = size.humanReadable(input);
+let output = humanReadableSize(input);
 console.log(output); // prints '10.12 kB'
 ```
 
 IEC standard usage:
 ```js
-const size = require('node-size');
+import { humanReadableSize, SIZE_FORMAT } from 'node-size';
 
 let input = 10120;
-let output = size.humanReadable(input, size.FORMAT.IEC);
+let output = humanReadableSize(input, SIZE_FORMAT.IEC);
 console.log(output); // prints '10.12 KiB'
 ```
 
 Changing default format:
 ```js
-const size = require('node-size');
+import { setDefaultSizeFormat, humanReadableSize, SIZE_FORMAT } from 'node-size';
 
-size.setDefaultFormat(size.FORMAT.IEC);
+setDefaultSizeFormat(SIZE_FORMAT.IEC);
 
 let input = 10120;
-let output = size.humanReadable(input);
+let output = humanReadableSize(input);
 console.log(output); // prints '10.12 KiB'
 ```
 
 Machine-readable usage:
 ```js
-const size = require('node-size');
+import { machineReadableSize, SIZE_FORMAT } from 'node-size';
 
 let input = "1 MiB";
-let output = size.machineReadable(input, size.FORMAT.IEC);
+let output = size.machineReadableSize(input, SIZE_FORMAT.IEC);
 console.log(output); // prints '10000000' (number)
 ```
+
+Available values for SIZE_FORMAT:
+* SI - divides/multiplies by 1024
+* JEDEC - same as SI
+* IEC - divides/multiplies by 1000

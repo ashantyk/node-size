@@ -18,10 +18,10 @@ let DEFAULT_FORMAT = FORMAT_SI;
  *     3000000 to '3 MiB' (using FORMAT.IEC)
  *
  * @param {number} size The actual size in bytes
- * @param {number} format The format in wich to make the transformation (IEC/SI)
+ * @param {?number} format The format in which to make the transformation (IEC/SI)
  * @return {string}
  */
-let _humanReadable = function(size, format){
+export function humanReadableSize(size, format= undefined){
 
     if(typeof size !== 'number'){
         throw new TypeError("Invalid `size` parameter");
@@ -46,7 +46,7 @@ let _humanReadable = function(size, format){
 
     return size.toFixed(DECIMALS) + ' ' + units[divisions];
 
-};
+}
 
 /**
  * Convert human-readable sizes (string) to machine-readable sizes (integer)
@@ -56,10 +56,10 @@ let _humanReadable = function(size, format){
  *    '3MiB' to 3000000 (using FORMAT.IEC)
  *
  * @param {string} size The human-readable size
- * @param {number} format The format in wich to make the transformation (IEC/SI)
+ * @param {?number} format The format in which to make the transformation (IEC/SI)
  * @return {number}
  */
-let _machineReadable = function(size, format){
+export function machineReadableSize(size, format = undefined){
 
     if(typeof size !== 'string'){
         throw new TypeError("Invalid `size` parameter");
@@ -94,14 +94,14 @@ let _machineReadable = function(size, format){
     let computedSize = parseFloat(foundSize) * multiplier;
     return Number.isSafeInteger(computedSize) ? parseInt(computedSize) : computedSize;
 
-};
+}
 
 /**
  * Sets the default format for the converting functions (IEC/SI)
  *
  * @param {number} format
  */
-let _setDefaultFormat = function(format){
+export function setDefaultSizeFormat(format){
 
     if(typeof format !== 'number' || [FORMAT_SI, FORMAT_IEC].indexOf(format) === -1){
         throw new TypeError("Invalid `format` parameter");
@@ -109,15 +109,10 @@ let _setDefaultFormat = function(format){
 
     DEFAULT_FORMAT = format;
 
-};
+}
 
-module.exports = {
-    'setDefaultFormat' : _setDefaultFormat,
-    'humanReadable'    : _humanReadable,
-    'machineReadable'  : _machineReadable,
-    'FORMAT': {
-        "SI"    : FORMAT_SI,
-        "JEDEC" : FORMAT_SI,
-        "IEC"   : FORMAT_IEC
-    }
-};
+export const SIZE_FORMAT = {
+    "SI"    : FORMAT_SI,
+    "JEDEC" : FORMAT_SI,
+    "IEC"   : FORMAT_IEC
+}
