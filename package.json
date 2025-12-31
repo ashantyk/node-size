@@ -1,7 +1,7 @@
 {
     "name": "node-size",
     "description": "Convert byte sizes to human-readable formats and back",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "license": "MIT",
     "homepage": "https://github.com/ashantyk/node-size",
@@ -18,7 +18,7 @@
     },
     "type": "module",
     "devDependencies": {
-        "mocha": "^11.1.0"
+        "mocha": "^11.7.5"
     },
     "keywords": [
         "size",
